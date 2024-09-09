@@ -33,35 +33,40 @@ This workflow serves as the entry point for the program, where the following act
    - Similarly, if `topLevelOrchestratorFolderName` is not declared, it defaults to "/", representing the top-level tenant folder. 
    - The `CredentialManager` asset is utilized to cache the credentials that are currently in use.
 
-2. **ValidateListOfCredentialAssetNamesProvided **: 
+2. If a listOfCredentialAssetNames is provided, the program validates the given list in (3). Otherwise, it retrieves the list of credentials from the Orchestrator's shared folder by searching through available assets (4).
+
+3. **ValidateListOfCredentialAssetNamesProvided **: 
    -This workflow checks the validity of a list of credential asset names provided. It verifies that each asset name in the provided list meets exist in the Orchestrator.
 
-3. **CreateCredentialManagerAssetIfNotExisting**: 
+4. **GetListOfCredentials **: 
+   -searches a target Orchestrator folder and retrieves all credential asset names that match a given mnemonic. if no memonic assumes all credential assets on the shared provided this workflow selects all credentials on the share folder.
+
+5. **CreateCredentialManagerAssetIfNotExisting**: 
    - This workflow creates a text value asset named `CredentialManager` in the specified Orchestrator folder if it does not already exist. 
    - Upon its initial creation, the asset's default value will be a JSON string: `{"CredentialName":"JobId"}`. This format indicates that it will store a JSON object containing the properties `CredentialName` and `JobId`.
 
-4. **ReadAndUpdateCredentialManager**: 
+6. **ReadAndUpdateCredentialManager**: 
    - This workflow gets a list of active jobs from the Credential Manager Asset, where job information is stored as JSON text. 
    - First, it uses the Orchestrator API to find all jobs that are currently running or pending, which are called active jobs.
    - For each active job, if the job ID is found in the Credential Manager's JSON text, it is kept. If there are older jobs that are no longer active, they are removed from the JSON text. 
    - Finally, the updated JSON text is saved back to the Credential Manager Asset and returned in a Credential Manager Dictionary.
 
-5. **Iterate Asset Names**: 
+7. **Iterate Asset Names**: 
    - The program iterates through all credential asset names retrieved in (1), checking for its absence in the Credential Manager Dictionary from (4). 
    - Upon finding an asset that is not currently in use (i.e., not present in Credential Manager Dictionary), the program captures its name and exits the loop. 
    - This asset name represents an available resource ready for use.
 
-If step (5) successfully returns a credential asset name, then (6) and (7) are executed:
+If step (7) successfully returns a credential asset name, then (8) and (9) are executed:
 
-6. **GetCredentialActivity**: 
+8. **GetCredentialActivity**: 
    - This workflow uses the retrieved asset name to invoke the UiPath `GetCredential` activity, fetching the corresponding credential (username and password).
 
-7. **AddCurrentJobIdToCredentialManager**: 
+9. **AddCurrentJobIdToCredentialManager**: 
    - This workflow registers the job ID of the current process with the asset name in the Credential Manager. 
    - It updates the associated value in the JSON text format. For instance, if the job ID is `56sg672628-67126gh1jj2`, the JSON text will be updated to `{"CredentialName":"JobId","Credential1":"asxdf"}`. 
    - This ensures that any subsequent programs that access this library cannot use `Credential1` while the job ID `[asxdf]` is still running or pending.
 
-8. **Error Handling**: 
+10. **Error Handling**: 
    - If step (5) does not return a credential asset name, the program throws an error.
 
 
