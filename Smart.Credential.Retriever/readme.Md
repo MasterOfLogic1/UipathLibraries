@@ -33,13 +33,12 @@ This workflow serves as the entry point for the program, where the following act
    - Similarly, if `topLevelOrchestratorFolderName` is not declared, it defaults to "/", representing the top-level tenant folder. 
    - The `CredentialManager` asset is utilized to cache the credentials that are currently in use.
 
-2. **CreateCredentialManagerAssetIfNotExisting**: 
+2. **ValidateListOfCredentialAssetNamesProvided **: 
+   -This workflow checks the validity of a list of credential asset names provided. It verifies that each asset name in the provided list meets exist in the Orchestrator.
+
+3. **CreateCredentialManagerAssetIfNotExisting**: 
    - This workflow creates a text value asset named `CredentialManager` in the specified Orchestrator folder if it does not already exist. 
    - Upon its initial creation, the asset's default value will be a JSON string: `{"CredentialName":"JobId"}`. This format indicates that it will store a JSON object containing the properties `CredentialName` and `JobId`.
-
-3. **GetListOfCredentials**: 
-   - This workflow searches the shared Orchestrator folder to retrieve all credential asset names that match a given mnemonic. 
-   - This generates a list of credential asset names that can be utilized. However, the program does not yet know which of these credentials are currently free. In the next step, it will obtain a list of credentials that are in use.
 
 4. **ReadAndUpdateCredentialManager**: 
    - This workflow gets a list of active jobs from the Credential Manager Asset, where job information is stored as JSON text. 
@@ -65,3 +64,35 @@ If step (5) successfully returns a credential asset name, then (6) and (7) are e
 8. **Error Handling**: 
    - If step (5) does not return a credential asset name, the program throws an error.
 ```
+
+How To Use:
+
+### Key Arguments You Need to Supply:
+
+1. **`topLevelOchestratorFolderName`**
+   - **What it is**: The name of the top-level folder in Orchestrator.
+   - **Example**: `"Company"`
+   - if not declared, it defaults to "/", representing the top-level tenant folder. 
+
+2. **`sharedOchestratorFolderName`**
+   - **What it is**: The specific folder inside the top-level folder where the credentials are stored.
+   - **Example**: `"IT_Credentials"`
+   - If not declared, the program defaults to "Shared."
+
+3. **`listOfCredentialAssetNamesInSharedFolder`**
+   - **What it is**: A list of the names of the credentials you want to retrieve from that folder.
+   - **Example**: `{"EmailCredentials", "DatabaseCredentials"}`
+
+### How to Use These:
+
+- If your folder structure in Orchestrator looks like this:
+  - Top-level folder: `"Company"`
+  - Shared folder: `"General"`
+  - Credential assets you want always choose from: `"AppCredentials1"`, `"AppCredentials2"`, `"AppCredentials3"`
+
+You would pass these values as arguments like this:
+- **`topLevelOchestratorFolderName`**: `"Company"`
+- **`sharedOchestratorFolderName`**: `"General"`
+- **`listOfCredentialAssetNamesInSharedFolder`**: `{"AppCredentials1", "AppCredentials2", "AppCredentials3"}`
+
+This is all you need an the library would return the credentials which is not in use by another process or robot.
