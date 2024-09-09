@@ -38,8 +38,8 @@ This workflow serves as the entry point for the program, where the following act
 3. **ValidateListOfCredentialAssetNamesProvided**: 
    - when a `listOfCredentialAssetNamesInSharedFolder` is provided this verifies that each asset name in the list exist in the `sharedOrchestratorFolderName` of the ochestrator as a credential.
 
-4. **GetListOfCredentials**: 
-   -when a `listOfCredentialAssetNamesInSharedFolder` is NOT provideded this retrievs all credentials asset names from the `sharedOrchestratorFolderName` of the Orchestrator that match a given `tagToIdentifyTargetCredentialsWith` and puts them into the 'listOfCredentialAssetNamesInSharedFolder`. Alternatively, if no `tagToIdentifyTargetCredentialsWith` was provided its takes all credential assets on the shared ochestrator and puts them into the 'listOfCredentialAssetNamesInSharedFolder`.
+4. **GetListOfCredentials**:
+   - when a `listOfCredentialAssetNamesInSharedFolder` is NOT provideded this retrievs all credentials asset names from the `sharedOrchestratorFolderName` of the Orchestrator that match a given `tagToIdentifyTargetCredentialsWith` and puts them into the 'listOfCredentialAssetNamesInSharedFolder`. Alternatively, if no `tagToIdentifyTargetCredentialsWith` was provided its takes all credential assets on the shared ochestrator and puts them into the 'listOfCredentialAssetNamesInSharedFolder`.
 
 5. **CreateCredentialManagerAssetIfNotExisting**: 
    - This creates a text value asset named `CredentialManager` in the `sharedOrchestratorFolderName` of the ochestrator if it does not already exist. 
