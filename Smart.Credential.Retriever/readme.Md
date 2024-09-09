@@ -7,7 +7,7 @@ Without a solution like this, a credential being used by one robot could uninten
 - **Inconsistent behavior** where robots cannot complete their tasks.
 - **Increased downtime** as processes need to be restarted.
 
-The **GetAvailableCredential** workflow dynamically manages credential allocation, ensuring that only unused credentials are assigned to robots. By checking the Credential Manager, it prevents the assignment of credentials that are already in use. This guarantees that:
+The **Smart.Credential.Retriever**  dynamically manages credential allocation, ensuring that only unused credentials are assigned to robots. By checking the Credential Manager, it prevents the assignment of credentials that are already in use. This guarantees that:
 - Each robot operates with a unique and free credential.
 - Application session conflicts are avoided.
 - Automation processes run smoothly without interruption.
