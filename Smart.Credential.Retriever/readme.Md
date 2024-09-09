@@ -28,14 +28,14 @@ Once an available credential asset name is identified, the workflow retrieves th
 
 This workflow serves as the entry point for the program, where the following actions occur:
 
-1. **Determining the Required Parameters:**: 
+1. **Determining the Required Parameters**: 
    - If the variable `sharedOrchestratorFolderName` is not declared, the program defaults to "Shared."
    - Similarly, if `topLevelOrchestratorFolderName` is not declared, it defaults to "/", representing the top-level tenant folder. 
    - The `CredentialManager` asset is utilized to cache the credentials that are currently in use.
 
 2. If a listOfCredentialAssetNames is provided, the program validates the given list in (3). Otherwise, it retrieves the list of credentials from the Orchestrator's shared folder by searching through available assets (4).
 
-3. **ValidateListOfCredentialAssetNamesProvided **: 
+3. **ValidateListOfCredentialAssetNamesProvided**: 
    - when a `listOfCredentialAssetNamesInSharedFolder` is provided this verifies that each asset name in the list exist in the Orchestrator as a credential in the `sharedOrchestratorFolderName`.
 
 4. **GetListOfCredentials **: 
