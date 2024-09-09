@@ -46,10 +46,11 @@ This workflow serves as the entry point for the program, where the following act
    - Upon its initial creation, the asset's default value will be a JSON string: `{"CredentialName":"JobId"}`. This format indicates that it will store a JSON object containing the properties `CredentialName` and `JobId`.
 
 6. **ReadAndUpdateCredentialManager**: 
-   - This workflow gets a list of active jobs from the Credential Manager Asset, where job information is stored as JSON text. 
-   - First, it uses the Orchestrator API to find all jobs that are currently running or pending, which are called active jobs.
-   - For each active job, if the job ID is found in the Credential Manager's JSON text, it is kept. If there are older jobs that are no longer active, they are removed from the JSON text. 
-   - Finally, the updated JSON text is saved back to the Credential Manager Asset and returned in a Credential Manager Dictionary.
+   - This generates a `credentialLogConfig` by reading and deserializing the JSON text in the `CredentialManager` asset. The generated config is a dictionary (of `String, String`), where the `CredentialName` is stored as a string against its corresponding `JobId` as a string.
+   - Next, it uses the Orchestrator API to find all jobs that are currently running or pending (active jobs). The active jobs are placed in a list of `JobId`.
+   - Only jobs in the `credentialLogConfig` with `JobId` present in the list of active `JobId` are preserved in the `credentialLogConfig`.
+   - The `credentialLogConfig` is serialized back to text and updated as JSON, then saved back to the `CredentialManager` asset.
+   - The `credentialLogConfig` is also returned for use in the next steps.
 
 7. **Iterate Asset Names**: 
    - The program iterates through all credential asset names retrieved in (1), checking for its absence in the Credential Manager Dictionary from (4). 
