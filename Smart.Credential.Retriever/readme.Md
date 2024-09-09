@@ -63,7 +63,7 @@ If step (5) successfully returns a credential asset name, then (6) and (7) are e
 
 8. **Error Handling**: 
    - If step (5) does not return a credential asset name, the program throws an error.
-```
+
 
 # How To Use In Uipath
 After  downloading package into your project from the Manage Depencies on your uipath studio
@@ -96,4 +96,4 @@ You would pass these values as arguments like this:
 - **`listOfCredentialAssetNamesInSharedFolder`**: `{"AppCredentials1", "AppCredentials2", "AppCredentials3"}`
 
 This is all you need, and the library would return the credentials which are not in use by another process or robot.
-
+```
