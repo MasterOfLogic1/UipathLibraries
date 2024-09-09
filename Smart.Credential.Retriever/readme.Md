@@ -28,7 +28,7 @@ Once an available credential asset name is identified, the workflow retrieves th
 
 This workflow serves as the entry point for the program, where the following actions occur:
 
-1. **Default Folder Names**: 
+1. **Determining the Required Parameters:**: 
    - If the variable `sharedOrchestratorFolderName` is not declared, the program defaults to "Shared."
    - Similarly, if `topLevelOrchestratorFolderName` is not declared, it defaults to "/", representing the top-level tenant folder. 
    - The `CredentialManager` asset is utilized to cache the credentials that are currently in use.
@@ -96,8 +96,8 @@ After  downloading package into your project from the Manage Depencies on your u
   - Credential assets you want to always choose from: `"AppCredentials1"`, `"AppCredentials2"`, `"AppCredentials3"`
 
 You would pass these values as arguments like this:
-- **`topLevelOchestratorFolderName`**: `"Company"`
-- **`sharedOchestratorFolderName`**: `"General"`
+- **`topLevelOchestratorFolderName`**: `"Company"` - `Optional` (if is not declared, the program defaults to "Shared")
+- **`sharedOchestratorFolderName`**: `"General"`   - `Optional` (if is not declared, the program defaults to the top level ochestrator folder "/")
 - **`listOfCredentialAssetNamesInSharedFolder`**: `{"AppCredentials1", "AppCredentials2", "AppCredentials3"}`
 
 This is all you need, and the library would return the credentials which are not in use by another process or robot.
