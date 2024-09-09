@@ -36,7 +36,7 @@ This workflow serves as the entry point for the program, where the following act
 2. If a listOfCredentialAssetNames is provided, the program validates the given list in (3). Otherwise, it retrieves the list of credentials from the Orchestrator's shared folder by searching through available assets (4).
 
 3. **ValidateListOfCredentialAssetNamesProvided **: 
-   - when a 'listOfCredentialAssetNamesInSharedFolder` is provided this verifies that each asset name in the list exist in the Orchestrator as a credential in the `sharedOrchestratorFolderName`.
+   - when a `listOfCredentialAssetNamesInSharedFolder` is provided this verifies that each asset name in the list exist in the Orchestrator as a credential in the `sharedOrchestratorFolderName`.
 
 4. **GetListOfCredentials **: 
    -retrievs all credentials asset names from the shared Orchestrator folder that match a given `tagToIdentifyTargetCredentialsWith`. if no `tagToIdentifyTargetCredentialsWith` was provided its takes all credential assets on the shared ochestrator and puts them into the 'listOfCredentialAssetNamesInSharedFolder`.
