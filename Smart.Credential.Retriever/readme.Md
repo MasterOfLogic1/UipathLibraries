@@ -95,16 +95,21 @@ After  downloading package into your project from the Manage Depencies on your u
    - **Example**: `"IT_Credentials"`
    - `Optional` If not declared, the program defaults to `"Shared."`
 
+4. **`tagToIdentifyTargetCredentialsWith`**
+   - **What it is**: is a phrase within credential names that helps filter and retrieve all credentials containing that phrase. If left blank, the program will select all available credentials without filtering by name. Only use when you have not declared `listOfCredentialAssetNamesInSharedFolder`.
+   - **Example**: `"WhatsAppCredential"`
+   - `Optional` Can be left blank If is you are going to let the program determine all credentials asset names from the `sharedOrchestratorFolderName` of the Orchestrator.
+
 ### How to Use These:
 
 - If your folder structure in Orchestrator looks like this:
   - Top-level folder: `"Company"`
   - Shared folder: `"General"`
-  - Credential assets you want to always choose from: `"AppCredentials1"`, `"AppCredentials2"`, `"AppCredentials3"`
+  - Credential assets you want to always choose from: `"WhatsAppCredential1"`, `"WhatsAppCredential2"`, `"WhatsAppCredential3"`
 
 You would pass these values as arguments like this:
 - **`topLevelOchestratorFolderName`**: `"Company"` 
 - **`sharedOchestratorFolderName`**: `"General"` 
-- **`listOfCredentialAssetNamesInSharedFolder`**: `{"AppCredentials1", "AppCredentials2", "AppCredentials3"}`
+- **`listOfCredentialAssetNamesInSharedFolder`**: `{"WhatsAppCredential1", "WhatsAppCredential2", "WhatsAppCredential3"}`
 This is all you need, and the library would return the credentials which are not in use by another process or robot.
 ```
