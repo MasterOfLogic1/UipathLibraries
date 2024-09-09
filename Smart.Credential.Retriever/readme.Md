@@ -66,7 +66,7 @@ If step (5) successfully returns a credential asset name, then (6) and (7) are e
 ```
 
 # How To Use In Uipath
-
+After  downloading package into your project from the Manage Depencies on your uipath studio
 ### Key Arguments You Need to Supply:
 
 1. **`topLevelOchestratorFolderName`**
