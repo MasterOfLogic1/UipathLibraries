@@ -53,22 +53,22 @@ This workflow serves as the entry point for the program, where the following act
    - The `credentialLogConfig` is also returned for use in the next steps.
 
 7. **Iterate Asset Names**: 
-   - The program iterates through all credential asset names retrieved in (1), checking for its absence in the Credential Manager Dictionary from (4). 
-   - Upon finding an asset that is not currently in use (i.e., not present in Credential Manager Dictionary), the program captures its name and exits the loop. 
-   - This asset name represents an available resource ready for use.
+   - The program iterates through `listOfCredentialAssetNamesInSharedFolder`, checking for its absence in the `credentialLogConfig`. 
+   - Upon finding an asset name in `listOfCredentialAssetNamesInSharedFolder` that is not currently in use (i.e., not present in `credentialLogConfig`), the program captures its name and exits the loop. 
+   - This asset name is stored in `assetNameOfAvailableCredential`.
 
-If step (7) successfully returns a credential asset name, then (8) and (9) are executed:
+If step (7) successfully returns a credential asset name, then steps (8) and (9) are executed:
 
-8. **GetCredentialActivity**: 
-   - This workflow uses the retrieved asset name to invoke the UiPath `GetCredential` activity, fetching the corresponding credential (username and password).
+8. **GetCredential Activity**: 
+   - The `GetCredential` activity is used to retrieve the `username` and `password` of `assetNameOfAvailableCredential` from `sharedOrchestratorFolderName`.
 
 9. **AddCurrentJobIdToCredentialManager**: 
-   - This workflow registers the job ID of the current process with the asset name in the Credential Manager. 
-   - It updates the associated value in the JSON text format. For instance, if the job ID is `56sg672628-67126gh1jj2`, the JSON text will be updated to `{"CredentialName":"JobId","Credential1":"asxdf"}`. 
-   - This ensures that any subsequent programs that access this library cannot use `Credential1` while the job ID `[asxdf]` is still running or pending.
+   - This workflow registers the `JobId` of the current process with the asset name in the `credentialLogConfig` and updates the JSON text in the `CredentialManager` asset. 
+   - It updates the associated value in the JSON text format. For example, if the job ID is `56sg672628-67126gh1jj2`, the JSON text will be updated to `{"CredentialName":"JobId","Credential1":"56sg672628-67126gh1jj2"}`. 
+   - This ensures that any subsequent programs accessing this library cannot use `Credential1` while the job ID `56sg672628-67126gh1jj2` is still running or pending.
 
 10. **Error Handling**: 
-   - If step (5) does not return a credential asset name, the program throws an error.
+   - If step (7) does not return a credential asset name, the program throws an error.
 
 
 # How To Use In Uipath
