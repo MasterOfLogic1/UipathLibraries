@@ -1,5 +1,20 @@
-```markdown
-# GetAvailableCredential Workflow
+# Why Do We Need the GetAvailableCredential Workflow?
+
+The **GetAvailableCredential** workflow is essential in environments where multiple robots access the same application but cannot share the same credentials simultaneously. In many enterprise applications, attempting to use the same credentials for concurrent sessions can result in one or more robots being logged out automatically. This often leads to process failures, as the application detects multiple logins from the same account and terminates conflicting sessions.
+
+Without a solution like this, a credential being used by one robot could unintentionally be assigned to another robot, causing the first robot's session to be forcibly logged out. This creates critical issues, such as:
+- **Failed automations** due to unexpected logouts.
+- **Inconsistent behavior** where robots cannot complete their tasks.
+- **Increased downtime** as processes need to be restarted.
+
+The **GetAvailableCredential** workflow dynamically manages credential allocation, ensuring that only unused credentials are assigned to robots. By checking the Credential Manager, it prevents the assignment of credentials that are already in use. This guarantees that:
+- Each robot operates with a unique and free credential.
+- Application session conflicts are avoided.
+- Automation processes run smoothly without interruption.
+
+This solution is indispensable for ensuring reliable and uninterrupted robotic process automation (RPA), especially when dealing with applications that enforce strict login policies.
+
+# How it Works:
 
 The **GetAvailableCredential** workflow is designed to identify and retrieve an available credential asset from a specified Orchestrator folder. It accomplishes this by comparing a list of predefined asset credential names against those currently stored in the Credential Manager, which serves as a cache for the credentials in use.
 
