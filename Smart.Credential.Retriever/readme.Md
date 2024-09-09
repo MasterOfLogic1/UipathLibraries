@@ -36,10 +36,10 @@ This workflow serves as the entry point for the program, where the following act
 2. If a listOfCredentialAssetNames is provided, the program validates the given list in (3). Otherwise, it retrieves the list of credentials from the Orchestrator's shared folder by searching through available assets (4).
 
 3. **ValidateListOfCredentialAssetNamesProvided **: 
-   -This workflow checks the validity of a list of credential asset names provided. It verifies that each asset name in the provided list meets exist in the Orchestrator.
+   - when a 'listOfCredentialAssetNamesInSharedFolder` is provided this verifies that each asset name in the list exist in the Orchestrator as a credential in the `sharedOrchestratorFolderName`.
 
 4. **GetListOfCredentials **: 
-   -searches a target Orchestrator folder and retrieves all credential asset names that match a given mnemonic. if no memonic assumes all credential assets on the shared provided this workflow selects all credentials on the share folder.
+   -retrievs all credentials asset names from the shared Orchestrator folder that match a given `tagToIdentifyTargetCredentialsWith`. if no `tagToIdentifyTargetCredentialsWith` was provided its takes all credential assets on the shared ochestrator and puts them into the 'listOfCredentialAssetNamesInSharedFolder`.
 
 5. **CreateCredentialManagerAssetIfNotExisting**: 
    - This workflow creates a text value asset named `CredentialManager` in the specified Orchestrator folder if it does not already exist. 
@@ -77,16 +77,22 @@ After  downloading package into your project from the Manage Depencies on your u
 1. **`topLevelOchestratorFolderName`**
    - **What it is**: The name of the top-level folder in Orchestrator.
    - **Example**: `"Company"`
-   - If not declared, it defaults to `/`, representing the top-level tenant folder.
+   - `Optional` If not declared, it defaults to `/`, representing the top-level tenant folder.
 
 2. **`sharedOchestratorFolderName`**
    - **What it is**: The specific folder inside the top-level folder where the credentials are stored.
    - **Example**: `"IT_Credentials"`
-   - If not declared, the program defaults to `"Shared."`
+   - `Optional` If not declared, the program defaults to `"Shared"`
 
 3. **`listOfCredentialAssetNamesInSharedFolder`**
    - **What it is**: A list of the names of the credentials you want to retrieve from that folder.
    - **Example**: `{"AppCredentials1", "AppCredentials2", "AppCredentials3"}`
+   - `Optional` If not declared, the program defaults to `"Shared"`
+
+4. **`sharedOchestratorFolderName`**
+   - **What it is**: The specific folder inside the top-level folder where the credentials are stored.
+   - **Example**: `"IT_Credentials"`
+   - `Optional` If not declared, the program defaults to `"Shared."`
 
 ### How to Use These:
 
@@ -96,9 +102,8 @@ After  downloading package into your project from the Manage Depencies on your u
   - Credential assets you want to always choose from: `"AppCredentials1"`, `"AppCredentials2"`, `"AppCredentials3"`
 
 You would pass these values as arguments like this:
-- **`topLevelOchestratorFolderName`**: `"Company"` - `Optional` (if is not declared, the program defaults to "Shared")
-- **`sharedOchestratorFolderName`**: `"General"`   - `Optional` (if is not declared, the program defaults to the top level ochestrator folder "/")
+- **`topLevelOchestratorFolderName`**: `"Company"` 
+- **`sharedOchestratorFolderName`**: `"General"` 
 - **`listOfCredentialAssetNamesInSharedFolder`**: `{"AppCredentials1", "AppCredentials2", "AppCredentials3"}`
-
 This is all you need, and the library would return the credentials which are not in use by another process or robot.
 ```
