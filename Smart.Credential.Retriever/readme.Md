@@ -81,7 +81,7 @@ After  downloading package into your project from the Manage Depencies on your u
 
 3. **`listOfCredentialAssetNamesInSharedFolder`**
    - **What it is**: A list of the names of the credentials you want to retrieve from that folder.
-   - **Example**: `{"EmailCredentials", "DatabaseCredentials"}`
+   - **Example**: `{"AppCredentials1", "AppCredentials2", "AppCredentials3"}`
 
 ### How to Use These:
 
