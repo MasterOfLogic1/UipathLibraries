@@ -1,6 +1,6 @@
-# Why Do We Need the GetAvailableCredential Workflow?
+# Why Do We Need the Smart.Credential.Retriever ?
 
-The **GetAvailableCredential** workflow is essential in environments where multiple robots access the same application but cannot share the same credentials simultaneously. In many enterprise applications, attempting to use the same credentials for concurrent sessions can result in one or more robots being logged out automatically. This often leads to process failures, as the application detects multiple logins from the same account and terminates conflicting sessions.
+The **Smart.Credential.Retriever** workflow is essential in environments where multiple robots access the same application but cannot share the same credentials simultaneously. In many enterprise applications, attempting to use the same credentials for concurrent sessions can result in one or more robots being logged out automatically. This often leads to process failures, as the application detects multiple logins from the same account and terminates conflicting sessions.
 
 Without a solution like this, a credential being used by one robot could unintentionally be assigned to another robot, causing the first robot's session to be forcibly logged out. This creates critical issues, such as:
 - **Failed automations** due to unexpected logouts.
@@ -16,7 +16,7 @@ This solution is indispensable for ensuring reliable and uninterrupted robotic p
 
 # How it Works:
 
-The **GetAvailableCredential** workflow is designed to identify and retrieve an available credential asset from a specified Orchestrator folder. It accomplishes this by comparing a list of predefined asset credential names against those currently stored in the Credential Manager, which serves as a cache for the credentials in use.
+The program entry starts from the **GetAvailableCredential** workflow is designed to identify and retrieve an available credential asset from a specified Orchestrator folder. It accomplishes this by comparing a list of predefined asset credential names against those currently stored in the Credential Manager, which serves as a cache for the credentials in use.
 
 The **Credential Manager** is essentially an asset that temporarily stores used credential asset names and job IDs in JSON text format as the value of the asset. Job IDs uniquely identify a running process and can be retrieved using the Get Job activity.
 
