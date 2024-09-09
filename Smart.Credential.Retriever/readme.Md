@@ -65,19 +65,19 @@ If step (5) successfully returns a credential asset name, then (6) and (7) are e
    - If step (5) does not return a credential asset name, the program throws an error.
 ```
 
-How To Use:
+# How To Use In Uipath
 
 ### Key Arguments You Need to Supply:
 
 1. **`topLevelOchestratorFolderName`**
    - **What it is**: The name of the top-level folder in Orchestrator.
    - **Example**: `"Company"`
-   - if not declared, it defaults to "/", representing the top-level tenant folder. 
+   - If not declared, it defaults to `/`, representing the top-level tenant folder.
 
 2. **`sharedOchestratorFolderName`**
    - **What it is**: The specific folder inside the top-level folder where the credentials are stored.
    - **Example**: `"IT_Credentials"`
-   - If not declared, the program defaults to "Shared."
+   - If not declared, the program defaults to `"Shared."`
 
 3. **`listOfCredentialAssetNamesInSharedFolder`**
    - **What it is**: A list of the names of the credentials you want to retrieve from that folder.
@@ -88,11 +88,12 @@ How To Use:
 - If your folder structure in Orchestrator looks like this:
   - Top-level folder: `"Company"`
   - Shared folder: `"General"`
-  - Credential assets you want always choose from: `"AppCredentials1"`, `"AppCredentials2"`, `"AppCredentials3"`
+  - Credential assets you want to always choose from: `"AppCredentials1"`, `"AppCredentials2"`, `"AppCredentials3"`
 
 You would pass these values as arguments like this:
 - **`topLevelOchestratorFolderName`**: `"Company"`
 - **`sharedOchestratorFolderName`**: `"General"`
 - **`listOfCredentialAssetNamesInSharedFolder`**: `{"AppCredentials1", "AppCredentials2", "AppCredentials3"}`
 
-This is all you need an the library would return the credentials which is not in use by another process or robot.
+This is all you need, and the library would return the credentials which are not in use by another process or robot.
+
