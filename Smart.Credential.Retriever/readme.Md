@@ -33,16 +33,16 @@ This workflow serves as the entry point for the program, where the following act
    - Similarly, if `topLevelOrchestratorFolderName` is not declared, it defaults to "/", representing the top-level tenant folder. 
    - The `CredentialManager` asset is utilized to cache the credentials that are currently in use.
 
-2. If a listOfCredentialAssetNames is provided, the program validates the given list in (3). Otherwise, it retrieves the list of credentials from the Orchestrator's shared folder by searching through available assets (4).
+2. If a `listOfCredentialAssetNamesInSharedFolder` is provided, the program validates the given list in (3). Otherwise, it retrieves the list of credentials from the Orchestrator's shared folder by searching through available assets (4).
 
 3. **ValidateListOfCredentialAssetNamesProvided**: 
-   - when a `listOfCredentialAssetNamesInSharedFolder` is provided this verifies that each asset name in the list exist in the Orchestrator as a credential in the `sharedOrchestratorFolderName`.
+   - when a `listOfCredentialAssetNamesInSharedFolder` is provided this verifies that each asset name in the list exist in the `sharedOrchestratorFolderName` of the ochestrator as a credential.
 
-4. **GetListOfCredentials **: 
-   -retrievs all credentials asset names from the shared Orchestrator folder that match a given `tagToIdentifyTargetCredentialsWith`. if no `tagToIdentifyTargetCredentialsWith` was provided its takes all credential assets on the shared ochestrator and puts them into the 'listOfCredentialAssetNamesInSharedFolder`.
+4. **GetListOfCredentials**: 
+   -when a `listOfCredentialAssetNamesInSharedFolder` is NOT provideded this retrievs all credentials asset names from the `sharedOrchestratorFolderName` of the Orchestrator that match a given `tagToIdentifyTargetCredentialsWith` and puts them into the 'listOfCredentialAssetNamesInSharedFolder`. Alternatively, if no `tagToIdentifyTargetCredentialsWith` was provided its takes all credential assets on the shared ochestrator and puts them into the 'listOfCredentialAssetNamesInSharedFolder`.
 
 5. **CreateCredentialManagerAssetIfNotExisting**: 
-   - This workflow creates a text value asset named `CredentialManager` in the specified Orchestrator folder if it does not already exist. 
+   - This creates a text value asset named `CredentialManager` in the `sharedOrchestratorFolderName` of the ochestrator if it does not already exist. 
    - Upon its initial creation, the asset's default value will be a JSON string: `{"CredentialName":"JobId"}`. This format indicates that it will store a JSON object containing the properties `CredentialName` and `JobId`.
 
 6. **ReadAndUpdateCredentialManager**: 
