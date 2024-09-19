@@ -1,0 +1,167 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="FormatFolderPath" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FolderPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>788,1152</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>FormatFolderPath_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="FormatFolderPath" sap:VirtualizedContainerService.HintSize="798,1087.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:String[]" Name="FilesInFolder" />
+      <Variable x:TypeArguments="x:Boolean" Name="DirectoryToFormatExist" />
+      <Variable x:TypeArguments="x:String" Name="errorMessage" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="756,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Starting routine to format directory &quot;+in_FolderPath]" />
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[DirectoryToFormatExist]" sap:VirtualizedContainerService.HintSize="756,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_FolderPath]" PathType="Folder" />
+    <If Condition="[DirectoryToFormatExist]" sap:VirtualizedContainerService.HintSize="756,595.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,441.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap2010:Annotation.AnnotationText="Clear residual files in  in a folder before moving" DisplayName="Clear Files In Folder" sap:VirtualizedContainerService.HintSize="334,114.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Clearing &quot;+Path.GetFileNameWithoutExtension(in_FolderPath)+&quot;: Deleting residual files that might have been errorneously dropped into the &quot;+Path.GetFileNameWithoutExtension(in_FolderPath)+&quot; Folder to prevent errors&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:String[]">[FilesInFolder]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:String[]">[System.IO.Directory.GetFiles( in_FolderPath)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,252.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[FilesInFolder]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[item]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Residual files deleted succesfully&quot;]" />
+          </Sequence>
+          <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Clear residual Directory in a folder" Code="Try&#xA;Dim FoldersInFolder As String() = System.IO.Directory.GetDirectories( in_FolderPath)&#xA;If FoldersInFolder IsNot Nothing AndAlso FoldersInFolder.Length &gt; 0 Then&#xA;&#x9;For Each Folder As String In FoldersInFolder&#xA;&#x9;&#x9;Console.WriteLine(&quot;deleting &quot;+Path.GetFileName(Folder)+&quot; found in &quot;+Path.GetFileNameWithoutExtension(in_FolderPath))&#xA;&#x9;&#x9;System.IO.Directory.Delete(Folder,True)&#xA;&#x9;&#x9;'System.IO.Directory.Delete(Folder)&#xA;&#x9;Next&#xA;&#x9;&#xA;&#xA;End If&#xA;&#xA;Console.WriteLine(&quot;Residual folders succesfully deleted &quot;+Path.GetFileNameWithoutExtension(in_FolderPath))&#xA;&#xA;Catch ex As Exception&#xA;&#x9;errorMessage = ex.Message&#xA;&#x9;&#xA;End Try" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,194.666666666667" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+            <ui:InvokeCode.Arguments>
+              <InOutArgument x:TypeArguments="x:String" x:Key="errorMessage">[errorMessage]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
+            </ui:InvokeCode.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeCode>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Directory to format not present at this time&quot;]" />
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="756,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Done&quot;]" />
+  </Sequence>
+</Activity>

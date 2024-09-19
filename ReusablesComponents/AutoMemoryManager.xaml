@@ -1,0 +1,89 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AutoMemoryManager" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="directories" Type="InArgument(s:String[])" />
+    <x:Property Name="maxDataLife" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>784,577.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>AutoMemoryManager_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="AutoMemoryManager" sap:VirtualizedContainerService.HintSize="449.6,276.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="errorMessage" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xD;&#xA;Dim todaysDate As DateTime = System.DateTime.Now&#xD;&#xA;If directories IsNot Nothing AndAlso directories.Length &gt; 0&#xD;&#xA;&#x9;For Each directoryPath As String In directories&#xD;&#xA;&#x9;&#x9;If System.IO.Directory.Exists(directoryPath) Then&#xD;&#xA;&#x9;&#x9;&#x9;'Checks if subfolder in the designated director is too old, if too old deletes them&#xD;&#xA;&#x9;&#x9;&#x9;Dim innerfolders As String() = System.IO.Directory.GetDirectories(directoryPath)&#xD;&#xA;&#x9;&#x9;&#x9;'please do not uncomment these codes as this deletes inner folders , we only want to delete inner files&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;If  innerfolders IsNot Nothing AndAlso innerfolders.Length &gt; 0&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;For Each innerfolder As String In innerfolders&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Dim createDate As DateTime = System.IO.Directory.GetCreationTime(innerfolder)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Dim existence As Integer = todaysDate.Subtract(createDate).Days&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;If existence &gt;= maxDataLife&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'Delete inner folder with recursive because we what to delete inner folder and its contents&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Console.WriteLine(&quot;The folder &quot;+Path.GetFileNameWithoutExtension(innerfolder)+&quot; is has been on this drive for more than &quot;+maxDataLife.ToString+&quot;days and would be deleted &quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;System.IO.Directory.Delete(innerfolder,True)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Console.WriteLine(&quot;The folder &quot;+Path.GetFileNameWithoutExtension(innerfolder)+&quot; and its contents have been deleted &quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'do nothing&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Next&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'Checks if a file  in the designated directory is too old, if too old deletes them&#xD;&#xA;&#x9;&#x9;&#x9;Dim innerfiles As String() = System.IO.Directory.GetFiles(directoryPath)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;If  innerfiles IsNot Nothing AndAlso innerfiles.Length &gt; 0&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Console.WriteLine(innerfiles.Length.ToString+&quot; inner files spotted in [&quot;+ directoryPath+&quot;]&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;For Each innerfile As String In innerfiles&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Dim createDate As DateTime = System.IO.File.GetCreationTime(innerfile)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Dim existence As Integer = todaysDate.Subtract(createDate).Days&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;If existence &gt;= maxDataLife&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'Delete inner file&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Console.WriteLine(&quot;The file &quot;+Path.GetFileNameWithoutExtension(innerfile)+&quot; is has been on this drive for more than &quot;+maxDataLife.ToString+&quot;days and would be deleted &quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;System.IO.File.Delete(innerfile)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Console.WriteLine(&quot;The file &quot;+Path.GetFileNameWithoutExtension(innerfile)+&quot; and its contents have been deleted &quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'do nothing&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Next&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;End If&#xD;&#xA;&#x9;Next&#xD;&#xA;End If&#xD;&#xA;Catch ex As Exception&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;errorMessage = ex.Message&#xD;&#xA;&#x9;&#xD;&#xA;End Try" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="387.2,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="s:String[]" x:Key="directories">[directories]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="maxDataLife">[maxDataLife]</InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="errorMessage">[errorMessage]</InOutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+  </Sequence>
+</Activity>

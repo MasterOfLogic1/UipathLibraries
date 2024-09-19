@@ -1,0 +1,126 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ThrowExceptionIfJobAlreadyOnJobRefTable" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="tableName" Type="InArgument(x:String)" />
+    <x:Property Name="jobReferenceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="connectionString" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:ThrowExceptionIfJobAlreadyOnJobRefTable.tableName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ThrowExceptionIfJobAlreadyOnJobRefTable.tableName>
+  <this:ThrowExceptionIfJobAlreadyOnJobRefTable.jobReferenceNumber>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ThrowExceptionIfJobAlreadyOnJobRefTable.jobReferenceNumber>
+  <this:ThrowExceptionIfJobAlreadyOnJobRefTable.connectionString>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ThrowExceptionIfJobAlreadyOnJobRefTable.connectionString>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>840,744</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ThrowExceptionIfJobAlreadyOnJobRefTable_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ThrowExceptionIfJobAlreadyOnJobRefTable" sap:VirtualizedContainerService.HintSize="472,679.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="jobExists" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="//Returns true if a job already existson the job reference table&#xD;&#xA;try{&#xD;&#xA;jobExists = false;&#xD;&#xA;&#xD;&#xA;using (Microsoft.Data.SqlClient.SqlConnection connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString))&#xD;&#xA;{&#xD;&#xA;    connection.Open();&#xD;&#xA;&#xD;&#xA;    // Query To check If the job reference exists&#xD;&#xA;    String checkJobQuery = $@&quot;&#xD;&#xA;        SELECT CASE &#xD;&#xA;            WHEN EXISTS (SELECT 1 FROM dbo.{tableName} WHERE JOB_REFERENCE = @jobReferenceNumber) &#xD;&#xA;            THEN CAST(1 AS BIT) &#xD;&#xA;            ELSE CAST(0 AS BIT) &#xD;&#xA;        END;&#xD;&#xA;    &quot;;&#xD;&#xA;&#xD;&#xA;    using (Microsoft.Data.SqlClient.SqlCommand command = new Microsoft.Data.SqlClient.SqlCommand(checkJobQuery, connection))&#xD;&#xA;    {&#xD;&#xA;        // Add parameter To prevent SQL injection&#xD;&#xA;        command.Parameters.AddWithValue(&quot;@JobReference&quot;, jobReferenceNumber);&#xD;&#xA;&#xD;&#xA;        // Execute the query And Get the result&#xD;&#xA;        jobExists = (bool)command.ExecuteScalar();&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;}&#xD;&#xA;catch{&#xD;&#xA;&#x9;&#xD;&#xA;}&#xD;&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="410,165.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="tableName">[tableName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="jobReferenceNumber">[jobReferenceNumber]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="connectionString">[connectionString]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="jobExists">[jobExists]</OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <If Condition="[jobExists]" sap:VirtualizedContainerService.HintSize="410,363.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,179.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[New BusinessRuleException(&quot;The job has already been treated as per the PdfPacketJobTrackerTable&quot;)]" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3" />
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
