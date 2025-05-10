@@ -1,0 +1,289 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AutoSignPro" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="pngFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="canvasSelector" Type="InArgument(x:String)" />
+    <x:Property Name="topWindowSelector" Type="InArgument(x:String)" />
+    <x:Property Name="CanvasId" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>AutoSignPro_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="AutoSignPro" sap:VirtualizedContainerService.HintSize="902.8000000000001,2914.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="result" />
+      <Variable x:TypeArguments="x:String" Name="SignatureItem" />
+      <Variable x:TypeArguments="x:String" Name="strJson" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap2010:Annotation.AnnotationText="1.)First we confirm the png exists If the png exists  then we attach to target chrome browser.&#xD;&#xA;2.) convert the image to base 64&#xD;&#xA;3.) prepare the value to be passed into our javascript function&#xD;&#xA;4.) and inject the signature JS code&#xD;&#xA;" sap:VirtualizedContainerService.HintSize="603.2,2891.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="569.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;starting logic to execute pro javascript signature app &quot;]" />
+      <If sap2010:Annotation.AnnotationText="Check if any selector or required parameter is emtpty" Condition="[string.IsNullOrEmpty(topWindowSelector) Or string.IsNullOrEmpty(canvasSelector) Or string.IsNullOrEmpty(CanvasId)]" sap:VirtualizedContainerService.HintSize="569.6,116.8" sap2010:WorkflowViewState.IdRef="If_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,173.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw Exception="[New SystemException(&quot;the following parameters can not be null canvasId, topWindowSelector Or CanvasSelector&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_2" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[nameOf(topWindowSelector) +&quot; : &quot;+topWindowSelector +Environment.NewLine+nameOf(canvasSelector) +&quot; : &quot;+ canvasSelector]" />
+          </Sequence>
+        </If.Else>
+      </If>
+      <If sap2010:Annotation.AnnotationText="1.)First we confirm the png exists If the png exists  then we attach to target chrome browser.&#xD;&#xA;2.) convert the image to base 64&#xD;&#xA;3.) prepare the value to be passed into our javascript function&#xD;&#xA;4.) and inject the signature JS code&#xD;&#xA;" Condition="[File.Exists(pngFilePath)]" sap:VirtualizedContainerService.HintSize="569.6,2424.8" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="568,2029.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence sap:VirtualizedContainerService.HintSize="534.4,1969.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NApplicationCard sap2010:Annotation.AnnotationText="1.)First we confirm the png exists If the png exists  then we attach to target chrome browser.&#xD;&#xA;2.) convert the image to base 64&#xD;&#xA;3.) prepare the value to be passed into our javascript function&#xD;&#xA;4.) and inject the signature JS code&#xD;&#xA;" CloseMode="Never" DisplayName="Browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="500.8,1886.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="fd263dfe-663d-444d-94de-e4c4a81cd747">
+                <uix:NApplicationCard.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="467.2,1548.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:Comment sap:VirtualizedContainerService.HintSize="433.6,260" sap2010:WorkflowViewState.IdRef="Comment_1" Text="1.)First we confirm the png exists If the png exists  then we attach to target chrome browser.&#xD;&#xA;&#xD;&#xA;2.) convert the image to base 64&#xD;&#xA;&#xD;&#xA;3.) prepare the value to be passed into our javascript function&#xD;&#xA;&#xD;&#xA;4.) and inject the signature JS code&#xD;&#xA;" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;converting signature to byte &quot;]" />
+                      <Assign sap2010:Annotation.AnnotationText="convert the image to base 64" sap:VirtualizedContainerService.HintSize="433.6,145.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[SignatureItem]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[Convert.ToBase64String(File.ReadAllBytes(pngFilePath))]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;preparing parameters for javascript injection&quot;]" />
+                      <Assign sap2010:Annotation.AnnotationText="prepare the value to be passed into our javascript function" sap:VirtualizedContainerService.HintSize="433.6,145.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[strJson]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[NewtonSoft.Json.JsonConvert.SerializeObject(New Dictionary(Of String,String)From{{"SignatureItem",SignatureItem},{"CanvasId",CanvasId}})]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;running pro javascript signature app &quot;]" />
+                      <uix:NInjectJsScript sap2010:Annotation.AnnotationText="inject the signature JS code" DisplayName="Inject ServiceSignature" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,314.4" sap2010:WorkflowViewState.IdRef="NInjectJsScript_1" InputParameter="[strJson]" ScopeIdentifier="fd263dfe-663d-444d-94de-e4c4a81cd747" ScriptCode="Js\SignatureInjector.js" Version="V4">
+                        <uix:NInjectJsScript.ScriptOutput>
+                          <OutArgument x:TypeArguments="x:String">[result]</OutArgument>
+                        </uix:NInjectJsScript.ScriptOutput>
+                        <uix:NInjectJsScript.Target>
+                          <uix:TargetAnchorable BrowserURL="scribble-mouse-draw-it.lovable.app" DesignTimeRectangle="521, 334, 836, 251" DesignTimeScaleFactor="1.25" FuzzySelectorArgument="[canvasSelector]" Guid="2e8831be-c345-40cd-b288-c2eccedd7b64" InformativeScreenshot="0ac642d42c5e3588cc411add0ff134fd.png" ScopeSelectorArgument="[topWindowSelector]" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
+                        </uix:NInjectJsScript.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uix:NInjectJsScript>
+                      <If sap2010:Annotation.AnnotationText="Evaluate the result of the signature injection" Condition="[result.Equals(&quot;success&quot;)]" sap:VirtualizedContainerService.HintSize="433.6,93.6" sap2010:WorkflowViewState.IdRef="If_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,227.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,167.2" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[result]" />
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,173.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Throw Exception="[New SystemException(&quot;javascript injection for signature failed with error : &quot;+result)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </uix:NApplicationCard.Body>
+                <uix:NApplicationCard.TargetApp>
+                  <uix:TargetApp Area="-1929, -9, 1938, 1038" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="86675dc9aeaa039a87d66f9b384adb7f.jpg" Selector="[topWindowSelector]" Version="V2" />
+                </uix:NApplicationCard.TargetApp>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NApplicationCard>
+            </Sequence>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="568,173.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw Exception="[New SystemException(&quot;Unable to find file : &quot;+ pngFilePath)]" sap:VirtualizedContainerService.HintSize="534.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+  </Sequence>
+</Activity>
